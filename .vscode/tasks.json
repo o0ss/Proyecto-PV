@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: clang++ build active file. GLFW test",
+            "label": "C/C++: clang++ build active file in macOS.",
             "command": "/usr/bin/clang++",
             "args": [
                 "-fcolor-diagnostics",
