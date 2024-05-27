@@ -122,7 +122,7 @@ int main()
 	Shader ourLight("vertexLight.vl", "fragmentLight.fl");
 	Texture ourTexture;
 
-	GeneracionBuffer(VAO, VBO, EBO, VAO2, VBO2, EBO2, VAO3, VBO3, EBO3, vertices, sizeof(vertices), indices, sizeof(indices), VAO_L,vertices2, sizeof(vertices2),indices2, sizeof(indices2),vertices3,sizeof(vertices3),indices3, sizeof(indices3));
+	GeneracionBuffer(VAO, VBO, EBO, VAO2, VBO2, EBO2, VAO3, VBO3, EBO3, vertices, sizeof(vertices), indices, sizeof(indices), VAO_L, vertices2, sizeof(vertices2), indices2, sizeof(indices2), vertices3, sizeof(vertices3), indices3, sizeof(indices3));
 
 	diffuseMap1 = ourTexture.loadTextureID("Imagenes/w.png", 2);
 	specularMap1 = ourTexture.loadTextureID("Imagenes/caja_especular2.png", 2);
@@ -297,7 +297,6 @@ void updateWindow(GLFWwindow* window, Shader ourShader, Shader ourLight, Texture
 		ourShader.use();
 		
 		//ourShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-		ourShader.setVec3("light.position", posCubeLight[0]);
 		ourShader.setVec3("viewPos", camera.Position);
 		/*
 		ourShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
@@ -305,9 +304,43 @@ void updateWindow(GLFWwindow* window, Shader ourShader, Shader ourLight, Texture
 		ourShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f);
 		ourShader.setFloat("material.shininess", 32.0f);
 		*/
-		ourShader.setVec3("light.ambient", 0.9f, 0.9f, 0.9f);
-		ourShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
-		ourShader.setVec3("light.specular", 0.3f, 0.3f, 0.3f);
+
+		ourShader.setVec3("light_p1.position", -6.5f, 6.5f, 1.5f);
+		ourShader.setVec3("light_p1.ambient", 0.0f, 0.0f, 0.0f);
+		ourShader.setVec3("light_p1.diffuse", 0.7f, 0.1f, 0.1f);
+		ourShader.setVec3("light_p1.specular", 0.7f, 0.1f, 0.1f);
+		ourShader.setFloat("light_p1.constant", 1.0f);
+		ourShader.setFloat("light_p1.linear", 0.09f);
+		ourShader.setFloat("light_p1.quadratic", 0.032f);
+
+		ourShader.setVec3("light_p2.position", 6.5f, 6.5f, 1.5f);
+		ourShader.setVec3("light_p2.ambient", 0.0f, 0.0f, 0.0f);
+		ourShader.setVec3("light_p2.diffuse", 0.1f, 0.7f, 0.1f);
+		ourShader.setVec3("light_p2.specular", 0.1f, 0.7f, 0.1f);
+		ourShader.setFloat("light_p2.constant", 1.0f);
+		ourShader.setFloat("light_p2.linear", 0.09f);
+		ourShader.setFloat("light_p2.quadratic", 0.032f);
+
+		ourShader.setVec3("light_p3.position", 6.5f, -6.5f, 1.5f);
+		ourShader.setVec3("light_p3.ambient", 0.0f, 0.0f, 0.0f);
+		ourShader.setVec3("light_p3.diffuse", 0.05f, 0.1f, 0.9f);
+		ourShader.setVec3("light_p3.specular", 0.05f, 0.1f, 0.9f);
+		ourShader.setFloat("light_p3.constant", 1.0f);
+		ourShader.setFloat("light_p3.linear", 0.09f);
+		ourShader.setFloat("light_p3.quadratic", 0.032f);
+
+		ourShader.setVec3("light_p4.position", -6.5f, -6.5f, 1.5f);
+		ourShader.setVec3("light_p4.ambient", 0.0f, 0.0f, 0.0f);
+		ourShader.setVec3("light_p4.diffuse", 0.7f, 0.7f, 0.1f);
+		ourShader.setVec3("light_p4.specular", 0.7f, 0.7f, 0.1f);
+		ourShader.setFloat("light_p4.constant", 1.0f);
+		ourShader.setFloat("light_p4.linear", 0.09f);
+		ourShader.setFloat("light_p4.quadratic", 0.032f);
+
+		ourShader.setVec3("light_directional.direction", 0.0f, 0.0f, -1.0f);
+		ourShader.setVec3("light_directional.ambient", 0.3f, 0.2f, 0.1f);
+		ourShader.setVec3("light_directional.diffuse", 0.55f, 0.55f, 0.55f);
+		ourShader.setVec3("light_directional.specular", 0.1f, 0.1f, 0.1f);
 
 		ourShader.setFloat("material.shininess", 64.0f);
 
